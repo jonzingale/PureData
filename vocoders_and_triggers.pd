@@ -20,15 +20,13 @@
 #X obj 160 408 pack 0 100;
 #N canvas 1032 113 492 780 vocoder_logic 1;
 #X obj 42 31 inlet;
-#X obj 42 686 outlet;
-#X obj 41 446 div 10;
-#X obj 41 466 * 10;
+#X obj 36 556 outlet;
 #X text 230 29 temperament;
-#N canvas 99 75 322 308 temperament 0;
+#N canvas 99 75 322 308 temperament 1;
 #X obj -110 -16 int;
 #X floatatom -72 1 5 0 0 0 - - -;
 #X obj -133 -97 hradio 20 1 0 4 empty empty empty 0 -8 0 10 -83269
--262130 -1 1;
+-262130 -1 0;
 #X msg -144 -49 6;
 #X msg -115 -48 12;
 #X msg -85 -49 19;
@@ -105,9 +103,9 @@
 #A 0 0.498307 0.587401 0.681793 0.781797 0.887749 0 0.0594631 0.122462
 0.189207 0.259921 0.33484 0.414214 0.498307 0.587401 0.681793 0.781797
 0.887749 0 0.0594631 0.122462 0.189207 0.259921 0.33484 0.414214 0.498307
-0.587401 0.681793 0.781797 0.887749 0 0.0594631 0.122462 0.189207 0.259921
-0.33484 0.781797;
-#X coords 0 10 35 -10 600 200 1 0 0;
+0.587401 0.681793 0.781797 0.887749 0 2.56359 0.122462 0.189207 0.259921
+0.33484 0.887749;
+#X coords 0 10 35 -10 600 200 1;
 #X restore 100 20 graph;
 #X obj 73 458 + 1;
 #X obj 73 502 int;
@@ -175,7 +173,6 @@
 #X connect 30 0 31 0;
 #X connect 31 0 32 0;
 #X connect 32 0 19 0;
-#X connect 33 0 15 0;
 #X connect 34 0 20 0;
 #X connect 35 0 5 0;
 #X connect 35 0 26 0;
@@ -185,9 +182,7 @@
 #N canvas 917 138 582 512 epsilon_ball 0;
 #X obj 133 58 inlet;
 #X obj 147 294 outlet;
-#X restore 125 535 pd epsilon_ball;
-#N canvas 129 460 450 300 19_tone_selector 0;
-#X restore 125 571 pd 19_tone_selector;
+#X restore 138 616 pd epsilon_ball;
 #X text 96 249 place mic next to speaker;
 #X text 97 267 and get everyone started;
 #N canvas 97 253 234 436 Freq2Interval 1;
@@ -209,15 +204,14 @@
 #X obj 60 260 t b f;
 #X obj 41 283 * 12;
 #X obj 132 234 loadbang;
-#X obj 101 294 inv;
 #X obj 61 337 *;
 #X obj 61 385 outlet;
 #X text 63 402 k out;
 #X obj 61 361 int;
 #X msg 101 251 2;
 #X obj 101 272 log;
-#X text 142 259 is it here?;
 #X obj 61 315 t b f;
+#X obj 101 296 inv;
 #X connect 1 0 12 0;
 #X connect 2 0 11 0;
 #X connect 11 0 13 0;
@@ -227,15 +221,15 @@
 #X connect 14 0 16 0;
 #X connect 15 0 16 0;
 #X connect 15 1 16 1;
-#X connect 16 0 19 0;
-#X connect 17 0 23 0;
-#X connect 18 0 26 0;
-#X connect 19 0 22 0;
-#X connect 22 0 20 0;
-#X connect 23 0 24 0;
+#X connect 16 0 18 0;
+#X connect 17 0 22 0;
+#X connect 18 0 21 0;
+#X connect 21 0 19 0;
+#X connect 22 0 23 0;
+#X connect 23 0 25 0;
 #X connect 24 0 18 0;
-#X connect 26 0 19 0;
-#X connect 26 1 19 1;
+#X connect 24 1 18 1;
+#X connect 25 0 24 0;
 #X restore 94 445 pd Freq2Interval;
 #N canvas 346 242 262 461 Interval2Freq 1;
 #X text 20 37 f is fixed frequency;
@@ -289,19 +283,17 @@
 #X obj 187 420 r freq&temp;
 #X obj 187 465 r freq&temp;
 #X text 108 321 center Freq and Temp;
-#X connect 0 0 2 0;
-#X connect 0 0 15 0;
-#X connect 2 0 3 0;
-#X connect 5 0 6 0;
-#X connect 5 0 10 0;
+#X connect 0 0 12 0;
+#X connect 3 0 4 0;
+#X connect 3 0 8 0;
+#X connect 12 0 13 0;
+#X connect 13 0 1 0;
+#X connect 14 0 16 0;
 #X connect 15 0 16 0;
-#X connect 16 0 1 0;
-#X connect 17 0 19 0;
-#X connect 18 0 19 0;
-#X connect 19 0 20 0;
-#X connect 20 0 21 0;
-#X connect 22 0 15 1;
-#X connect 23 0 16 1;
+#X connect 16 0 17 0;
+#X connect 17 0 18 0;
+#X connect 19 0 12 1;
+#X connect 20 0 13 1;
 #X restore 160 388 pd vocoder_logic;
 #X text 29 495 open sets?;
 #X obj 166 314 sel 0;
@@ -313,30 +305,34 @@
 #X obj 166 294 > 70;
 #X floatatom 186 123 5 0 0 0 - - -;
 #X floatatom 256 364 5 0 0 0 - - -;
-#N canvas 1046 258 450 300 rando 0;
+#N canvas 1452 183 450 300 rando 1;
 #X msg 102 23 stop;
-#X floatatom 113 128 5 0 0 0 - - -;
+#X floatatom 139 159 5 0 0 0 - - -;
 #X msg 64 22 bang;
 #X obj 84 155 outlet;
 #X obj 78 49 metro 1000;
-#X obj 78 72 random 20;
-#X obj 78 95 * 40;
+#X obj 78 72 random 12;
+#X obj 78 95 * 1;
+#X obj 77 119 + 5;
 #X connect 0 0 4 0;
 #X connect 2 0 4 0;
 #X connect 4 0 5 0;
 #X connect 5 0 6 0;
-#X connect 6 0 1 0;
-#X connect 6 0 3 0;
-#X restore 91 352 pd rando;
+#X connect 6 0 7 0;
+#X connect 7 0 1 0;
+#X connect 7 0 3 0;
+#X restore 273 400 pd rando;
 #X obj 151 599 *~;
 #X obj 169 532 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 4300 1;
+-1 -1 1000 1;
 #X obj 167 574 / 127;
 #X obj 180 599 *~;
 #X obj 201 553 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 5300 1;
+-1 -1 700 1;
 #X obj 196 574 / 127;
 #X obj 228 466 * 1;
+#X floatatom 274 427 5 0 0 0 - - -;
+#X obj 271 448 inv;
 #X connect 1 2 8 0;
 #X connect 1 4 11 0;
 #X connect 2 0 3 0;
@@ -344,7 +340,6 @@
 #X connect 2 0 27 0;
 #X connect 4 0 2 0;
 #X connect 5 0 1 0;
-#X connect 5 1 1 0;
 #X connect 8 1 7 0;
 #X connect 8 1 25 0;
 #X connect 11 0 4 0;
@@ -366,7 +361,7 @@
 #X connect 27 0 21 0;
 #X connect 27 0 23 1;
 #X connect 28 0 25 1;
-#X connect 30 0 19 0;
+#X connect 30 0 38 0;
 #X connect 31 0 0 0;
 #X connect 32 0 33 0;
 #X connect 33 0 31 1;
@@ -374,3 +369,5 @@
 #X connect 35 0 36 0;
 #X connect 36 0 34 1;
 #X connect 37 0 16 0;
+#X connect 38 0 39 0;
+#X connect 39 0 37 1;
