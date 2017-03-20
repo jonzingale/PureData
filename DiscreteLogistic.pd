@@ -3,11 +3,11 @@
 #X obj 47 128 hsl 330 20 0 1 0 1 X Xin empty -2 -8 0 10 -45076 -261234
 -1 7 0;
 #X obj 44 56 hsl 330 20 2.9 4 0 1 Rval Rin empty -2 -8 0 10 -45076
--261234 -1 30700 0;
+-261234 -1 30806 0;
 #X obj 49 198 hsl 330 20 110 30000 1 1 Freq Freqin empty -2 -8 0 10
--45076 -261234 -1 18500 0;
+-45076 -261234 -1 17100 0;
 #X obj 49 267 hsl 330 20 11 7000 0 1 grain grainin empty -2 -8 0 10
--45076 -261234 -1 200 0;
+-45076 -261234 -1 654 0;
 #X text 225 39 2 < R < 4;
 #X floatatom 321 111 8 0 0 0 - X -;
 #X text 226 113 0 < X(0) < 1;
@@ -18,9 +18,9 @@
 #X text 70 39 |Chaotic ->;
 #X text 462 37 Band-Pass Q;
 #X obj 399 56 hsl 200 30 20 1200 0 1 qball qst empty -2 -8 0 10 -86853
--260097 -1 2200 0;
+-260097 -1 3600 0;
 #X obj 452 147 vsl 30 128 0 127 0 1 Vol Volin empty 0 -9 0 10 -86853
--260097 -1 9900 0;
+-260097 -1 10600 0;
 #X text 446 282 Noise;
 #X text 400 148 Volume;
 #X text 69 77 |3;
@@ -59,17 +59,16 @@
 #N canvas 365 509 205 211 del 0;
 #X obj 91 59 inlet;
 #X obj 24 30 r bp;
-#X obj 24 59 delay 10;
 #X obj 63 121 s X val;
 #X obj 63 88 f 0;
 #X obj 77 30 r grain;
-#X connect 0 0 4 1;
-#X connect 1 0 2 0;
-#X connect 2 0 4 0;
-#X connect 4 0 3 0;
-#X connect 5 0 2 1;
+#X obj 24 59 delay 3;
+#X connect 0 0 3 1;
+#X connect 1 0 5 0;
+#X connect 3 0 2 0;
+#X connect 5 0 3 0;
 #X restore 185 110 pd del;
-#N canvas 556 420 318 273 glissando 1;
+#N canvas 556 420 318 273 glissando 0;
 #X text 62 9 Glissando;
 #X obj 49 153 s bp;
 #X obj 49 124 line 100 10;
